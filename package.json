@@ -1,0 +1,21 @@
+{
+  "name": "pet-vet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "mysql": "^2.18.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2"
+  }
+}
