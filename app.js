@@ -1,15 +1,12 @@
 const express = require('express');
-const mysql = require('mysql');
 
-const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
 const PORT = process.env.PORT || 8080;
 
-const host = process.env.PORT || "0.0.0.0";
-
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 //mysql
 const connection = mysql.createConnection({
@@ -74,6 +71,57 @@ app.get('/shop/:id', (req, res) => {
 });
 
 
+
+
+/*
+
+router.get('/shop/', (req, res) => {
+    mysqlConnection.query('SELECT * FROM products', (err, rows, fields) => {
+        if(!err){
+            res.json(rows);
+        } else {
+            console.log(err);
+        } 
+    });
+});
+
+router.post('/', (req, res) => {
+    const { id, name, age, description, photo } = req.body;
+    const query = `
+    CALL petsAddOrEdit(?, ?, ?, ?, ?)
+    `;
+    mysqlConnection.query(query, [idpets, name, description, age, photo], (err, rows, fields) =>{
+        if(!err){
+            res.json({Status: 'Pet saved'});
+        } else {
+            console.log(err);
+        } 
+    });
+});
+
+router.put('/pets/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, age, description, photo } = req.body;
+    const query = 'CALL petsAddOrEdit(?, ?, ?, ?, ?)';
+    mysqlConnection.query(query, [idpets, name, description, age, photo], (err, rows, fields) => {
+        if(!err){
+            res.json({Status: 'Pet updated'});
+        } else {
+            console.log(err);
+        } 
+    });
+});
+
+router.delete('/pets/:id', (req, res) => {
+    const { id } = req.params;
+    mysqlConnection.query('DELETE FROM pets WHERE idpets = ? ', [id], (err, rows , fields) =>{
+        if(!err){
+            res.json({Status: 'Pet deleted'});
+        } else {
+            console.log(err);
+        } 
+    });
+});
 
 
 /*
