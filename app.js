@@ -13,10 +13,10 @@ app.use(bodyParser.json());
 
 //mysql
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'pets_com'
+    host: 'us-cdbr-east-05.cleardb.net',
+    user: 'b3d9c190977ee1',
+    password: 'f84a1942',
+    database: 'heroku_c75a05bec47f62a'
 });
 
 
@@ -46,7 +46,7 @@ app.get('/pets', (req, res) => {
 
 app.get('/pets/:id', (req, res) => {
     const { id } = req.params;
-    const sql = 'SELECT * FROM pets WHERE id  = ?';
+    const sql = 'SELECT * FROM pets WHERE idpets  = ?';
 
     connection.query(sql, [id], function (error, results, fields) {
         if (error) throw error;
@@ -65,13 +65,14 @@ app.get('/shop', (req, res) => {
 
 app.get('/shop/:id', (req, res) => {
     const { id } = req.params;
-    const sql = 'SELECT * FROM products WHERE id  = ?'
+    const sql = 'SELECT * FROM products WHERE idproducts  = ?'
 
     connection.query(sql, [id], function (error, results, fields) {
         if (error) throw error;
         res.json(results);
     });
 });
+
 
 
 
